@@ -1,0 +1,3 @@
+-W maintenance.package="/backup/upgradefiles/6.0.2-WS-WASIHS-AixPPC32-FP00000027.pak"
+-W product.location="/usr/IBMIHS"
+-W update.type="install"

@@ -1,0 +1,3 @@
+-W maintenance.package="/sit/usr/setup/was6.0.2/IHS/updateinstaller/maintenance/6.0-WS-WASIHS-AixPPC32-RP0000002.pak"
+-W product.location="/sit/usr/IBM/IHS"
+-W update.type="install"

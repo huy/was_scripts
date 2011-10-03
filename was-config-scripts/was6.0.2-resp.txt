@@ -1,0 +1,3 @@
+-W maintenance.package="/sit/usr/setup/was6.0.2/WAS/updateinstaller_rp0000002/maintenance/6.0-WS-WAS-AixPPC32-RP0000002.pak"
+-W product.location="/sit/usr/IBM/WebSphere/AppServer"
+-W update.type="install"

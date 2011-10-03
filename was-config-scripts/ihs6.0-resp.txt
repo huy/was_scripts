@@ -1,0 +1,6 @@
+-W silentInstallLicenseAcceptance.value="true"
+-W setupTypes.selectedSetupTypeId="custom"
+-P ihs.installLocation="/sit/usr/IBM/IHS"
+-P security.active="true"
+-W portPanel.httpPort="90"
+-W portPanel.adminPort="9008"

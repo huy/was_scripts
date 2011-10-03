@@ -1,0 +1,168 @@
+################################################################################
+#
+# Response file for WebSphere Application Server v6.0 custom profile creation
+#
+# This options file is located in the CD_ROOT\WAS\ directory and in the 
+# install_root\bin\ProfileCreator directory. 
+#
+# To use the options file under CD_ROOT\WAS\ directory, follow the instructions 
+# in CD_ROOT\WAS\responsefile.nd.txt. The WebSphere Application Server
+# Network Deployment installer locates this file during silent installation
+# and automatically runs the silent profile creation at the end of installation.
+# 
+# To use the options file under install_root\bin\ProfileCreator for silent profile
+# creation, you must change various values in the file and use the following command 
+# line arguments:
+# 
+#    -options "responsefile.pct.NDmanagedProfile.txt" -silent
+#
+################################################################################
+
+
+################################################################################
+# 
+# Profile name
+#
+# Set the name for this custom profile. The profile name must be unique for this 
+# WebSphere Application Server installation. 
+#
+#
+-W profilenamepanelInstallWizardBean.profileName="profileManaged"
+
+################################################################################
+# If you want to set this profile to be your default profile, set to "true".
+# Otherwise set to "false". If this is the first profile being created, the profile  
+# automatically is the default. 
+#
+-W profilenamepanelInstallWizardBean.isDefault="false"
+
+
+################################################################################
+# 
+# Profile location
+#
+# Specify a directory to contain the files that define the run-time environment, 
+# such as commands,configuration files, and log files. If the directory contains 
+# spaces, enclose it in double-quotes as shown in the Windows example below. 
+#
+# Note that spaces in the install location is only supported on Windows
+# operating systems.
+#
+# Default Install Location:
+#
+#    -P installLocation="<WAS_HOME>\profiles\<PROFILE_NAME>"
+#
+-P installLocation="C:\Program Files\IBM\WebSphere\AppServer\profiles\profileManaged"
+
+
+################################################################################
+# 
+# Node name
+#
+# Please select the node name for the Application Server. Node name under one cell 
+# has to be unique. 
+#
+# If you plan to migrate a V5 deployment manager cell, the V5 managed nodes are also 
+# migrated to the V6 cell. To incrementally migrate an individual V5 managed node 
+# to V6, you must use the same node name for the V6 Application Server profile.
+#
+# Replace YOUR_NODE_NAME with the actual node name. 
+#
+-W nodehostnamepanelInstallWizardBean.nodeName="YOUR_NODE_NAME"
+
+
+################################################################################
+#
+# Host name
+#
+# Specify the host name for the Application Server. The host name is the domain 
+# name system (DNS) name (short or long) or the IP address of this computer. 
+# 
+# Replace YOUR_HOST_NAME with the actual host name. Comment the line to use 
+# the default value.
+# 
+-W nodehostnamepanelInstallWizardBean.hostName="YOUR_HOST_NAME"
+
+
+################################################################################
+#
+# Cell name
+#
+# You should not Modify this, unless absolutely necessary
+# 
+# The Wizard would set this to short local host name + "Node##Cell" by default.
+#
+# If you would like to override the resolved cell name value, uncomment the line and
+# replace YOUR_CELL_NAME with <YOUR_OWN_VALUE>
+#
+# -W setnondmgrcellnameinglobalconstantsInstallWizardBean.value="YOUR_CELL_NAME"
+
+
+################################################################################
+# 
+# Ports value assignment
+#
+# The following entries are used to reset port numbers used in the configuration
+#
+# They are currently set to the defaults. 
+# Please check to make sure there are no port conflicts.
+# Port nubmers for each profile can be find in: <profile>/config/cells/<cell name>/nodes/<node name>/serverindex.xml
+#
+# If you specify true for the value of the -W pctfederationpanelInstallWizardBean.federateLater  
+# directive, port numbers are assigned automatically when you federate the 
+# node with the addNode command. The following port numbers do not apply.
+#
+-W pctmanagedprofileportspanelInstallWizardBean.BOOTSTRAP_ADDRESS="2809"
+-W pctmanagedprofileportspanelInstallWizardBean.SOAP_CONNECTOR_ADDRESS="8878"
+-W pctmanagedprofileportspanelInstallWizardBean.SAS_SSL_SERVERAUTH_LISTENER_ADDRESS="9901"
+-W pctmanagedprofileportspanelInstallWizardBean.CSIV2_SSL_SERVERAUTH_LISTENER_ADDRESS="9201"
+-W pctmanagedprofileportspanelInstallWizardBean.CSIV2_SSL_MUTUALAUTH_LISTENER_ADDRESS="9202"
+-W pctmanagedprofileportspanelInstallWizardBean.ORB_LISTENER_ADDRESS="9100"
+-W pctmanagedprofileportspanelInstallWizardBean.NODE_DISCOVERY_ADDRESS="7272"
+-W pctmanagedprofileportspanelInstallWizardBean.NODE_MULTICAST_DISCOVERY_ADDRESS="5000"
+-W pctmanagedprofileportspanelInstallWizardBean.NODE_IPV6_MULTICAST_DISCOVERY_ADDRESS="5001"
+-W pctmanagedprofileportspanelInstallWizardBean.DCS_UNICAST_ADDRESS="9353"
+
+
+################################################################################
+# 
+# Federation
+#
+# A custom profile contains an empty node that must be federated to a deployment 
+# manager to become a functional managed node. Identify a running deployment
+# manager that will administer the node or choose to federate the node later 
+# using the addNode command.
+#
+# Set to "true" if you want to federate this custom node later using the addNode 
+# command. You must federate this node later if the deployment manager :
+#            - is not running. 
+#            - has security enabled. 
+#            - has the SOAP connector disabled
+#
+# If you want to federate it now, set to "" and fill in the entries for the host  
+# and port of the deployment manager. 
+#
+-W pctfederationpanelInstallWizardBean.federateLater=""
+
+################################################################################
+# Specify the host name of the deployment manager for federation.
+#
+-W pctfederationpanelInstallWizardBean.hostname="YOUR_DEPLOYMENT_MANAGER_HOST_NAME"
+
+################################################################################
+# Specify the port number where the deployment manager (DMGR) is reachable on the 
+# above host. The default port value is "8879".
+#
+-W pctfederationpanelInstallWizardBean.port="YOUR_DEPLOYMENT_MANAGER_PORT_NUMBER"
+
+
+
+
+
+################################################################################
+# 
+# Profile type
+#
+# Must be set to "managed" for installing a custom profile. Do not change this!
+# 
+-W profiletypepanelInstallWizardBean.selection="managed"

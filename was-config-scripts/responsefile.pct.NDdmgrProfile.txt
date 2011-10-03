@@ -1,0 +1,167 @@
+################################################################################
+#
+# Response file for Websphere Application Server 6.0 dmgr profile creation
+#
+# This options file is located in the CD_ROOT\WAS\ directory and in the 
+# install_root\bin\ProfileCreator directory. 
+#
+# To use the options file under CD_ROOT\WAS\ directory, follow the instructions 
+# in CD_ROOT\WAS\responsefile.nd.txt. The WebSphere Application Server
+# Network Deployment installer locates this file during silent installation
+# and automatically runs the silent profile creation at the end of installation.
+# 
+# To use the options file under install_root\bin\ProfileCreator for silent profile
+# creation, you must change various values in the file and use the following  
+# command line arguments:
+# 
+#    -options "responsefile.pct.NDdmgrProfile.txt" -silent
+#
+################################################################################
+
+
+################################################################################
+# 
+# Profile name
+#
+# Set the profile name for installing a deployment manager profile. The profile 
+# name must be unique for this WebSphere Application Server installation.  
+#
+-W profilenamepanelInstallWizardBean.profileName="profileDmgr"
+
+################################################################################
+# If you want to set this profile to be your default profile, set to "true".
+# Otherwise set to "false". If this is the first profile being created, the profile  
+# automatically is the default. 
+#
+-W profilenamepanelInstallWizardBean.isDefault="false"
+
+
+################################################################################
+# 
+# Profile location
+#
+# Specify a directory to contain the files that define the run-time environment, 
+# such as commands,configuration files, and log files. If the directory contains 
+# spaces, enclose it in double-quotes as shown in the Windows example below. 
+#
+# Note that spaces in the install location is only supported on Windows
+# operating systems.
+#
+# Default Install Location:
+#
+#    -P installLocation="<WAS_HOME>\profiles\<PROFILE_NAME>"
+#
+-P installLocation="C:\Program Files\IBM\WebSphere\AppServer\profiles\profileDmgr"
+
+
+################################################################################
+# 
+# Node name
+#
+# Please select the node name for the Application Server. Node name under one cell 
+# has to be unique. 
+#
+# Replace YOUR_NODE_NAME with the actual node name. 
+#
+-W nodehostandcellnamepanelInstallWizardBean.nodeName="YOUR_NODE_NAME"
+
+################################################################################
+#
+# Host name
+#
+# Specify the host name for the Application Server. The host name is the domain 
+# name system (DNS) name (short or long) or the IP address of this computer. 
+# 
+# Replace YOUR_HOST_NAME with the actual host name. Comment the line to use 
+# the default value.
+# 
+-W nodehostandcellnamepanelInstallWizardBean.hostName="YOUR_HOST_NAME"
+
+################################################################################
+#
+# Cell name
+#
+# Specify the cell name for the Application Server. 
+#
+# If you plan to migrate a V5 deployment manager cell to this V6 deployment 
+# manager, specify the same cell name as the V5 cell. 
+#
+# Replace YOUR_CELL_NAME with the actual cell name. 
+#
+-W nodehostandcellnamepanelInstallWizardBean.cellName="YOUR_CELL_NAME"
+
+
+################################################################################
+# 
+# Port value assignment
+# 
+# The following entries are used to reset port numbers used in the configuration
+#
+# They are currently set to the defaults. 
+# Please check to make sure there are no Port Conflicts.
+# Port nubmers for each profile can be found in: <profile>/config/cells/<cell name>/nodes/<node name>/serverindex.xml
+#
+-W pctdmgrprofileportspanelInstallWizardBean.WC_adminhost="9060"
+-W pctdmgrprofileportspanelInstallWizardBean.WC_adminhost_secure="9043"
+-W pctdmgrprofileportspanelInstallWizardBean.BOOTSTRAP_ADDRESS="9809"
+-W pctdmgrprofileportspanelInstallWizardBean.SOAP_CONNECTOR_ADDRESS="8879"
+-W pctdmgrprofileportspanelInstallWizardBean.SAS_SSL_SERVERAUTH_LISTENER_ADDRESS="9404"
+-W pctdmgrprofileportspanelInstallWizardBean.CSIV2_SSL_SERVERAUTH_LISTENER_ADDRESS="9406"
+-W pctdmgrprofileportspanelInstallWizardBean.CSIV2_SSL_MUTUALAUTH_LISTENER_ADDRESS="9405"
+-W pctdmgrprofileportspanelInstallWizardBean.ORB_LISTENER_ADDRESS="9101"
+-W pctdmgrprofileportspanelInstallWizardBean.CELL_DISCOVERY_ADDRESS="7277"
+-W pctdmgrprofileportspanelInstallWizardBean.DCS_UNICAST_ADDRESS="9352"
+
+
+################################################################################
+# 
+# Windows service
+#
+# The following directives are to install services for Websphere Application Server on Windows.  
+# Using Services, you can start and stop services, and configure startup and recovery actions. 
+# Set winServiceQuery="false" will turn off the function on windows system.
+# You can ignore these or comment them out for other Operating Systems.
+#
+-W winservicepanelInstallWizardBean.winServiceQuery="true"
+
+################################################################################
+# Specify account type of the service. Legal values are:
+#   
+#    localsystem   - Indicates that you choose to use Local System account.
+#    specifieduser - Indicates that you choose to use specified user account.
+#
+-W winservicepanelInstallWizardBean.accountType="localsystem"
+
+################################################################################
+# If you chose to install a service above with the accountType="localsystem",
+# the userName and password below can be ignored. If the accountType was set to:
+# accountType="specifieduser", then you must specify the User Name and Password 
+# which are required to install the Services. The current user must be admin or must 
+# have admin authority to install a Service. Also the username 
+# which is given here must have "Log On as a Service " authority 
+# for the service to run properly.
+#
+# Replace YOUR_USER_NAME with your username.
+#
+-W winservicepanelInstallWizardBean.userName="YOUR_USER_NAME"
+
+################################################################################
+# Replace YOUR_PASSWORD with your valid password.
+#
+-W winservicepanelInstallWizardBean.password="YOUR_PASSWORD"
+
+################################################################################
+# Set the startup type of the WebSphere Application Server on Windows.
+# Valid values are "automatic", "manual", and "disabled".
+#
+-W winservicepanelInstallWizardBean.startupType="manual"
+
+
+
+################################################################################
+# Profile type
+#
+# Must be set to  "dmgr" for installing a deployment manager Profile.
+# Do not change this!
+#
+-W profiletypepanelInstallWizardBean.selection="dmgr"

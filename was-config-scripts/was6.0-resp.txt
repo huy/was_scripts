@@ -1,0 +1,7 @@
+-W silentInstallLicenseAcceptance.value="true"
+-P wasProductBean.installLocation="/sit/usr/IBM/WebSphere/AppServer"
+-P samplesProductFeatureBean.active="false"
+-P javadocsProductFeatureBean.active="false"
+-W ndsummarypanelInstallWizardBean.launchPCT="false"
+-W pctresponsefilelocationqueryactionInstallWizardBean.fileLocation=""
+

@@ -1,0 +1,173 @@
+################################################################################
+#
+# InstallShield Options File
+#
+# Wizard name: Install
+# Wizard source: setup.jar
+#
+# This file can be used to configure Install with the options specified below
+# when the wizard is run with the "-options" command line option. Read each
+# setting's documentation for information on how to change its value.
+# 
+# A common use of an options file is to run the wizard in silent mode. This lets
+# the options file author specify wizard settings without having to run the
+# wizard in graphical or console mode. To use this options file for silent mode
+# execution, use the following command line arguments when running the wizard:
+# 
+#    -options "D:\installImage\WAS\responsefile.nd.txt" -silent
+#
+################################################################################
+
+###################################################################################
+#
+# License Acceptance
+#
+# Valid Options	: true   Accepts the license. Will install the product.
+#		  false  Declines the license. Install will not occur.  
+#
+# If no install occurs, this will be logged to a temporary log file in the user's temporary directory.
+#
+# By changing the silentInstallLicenseAcceptance.value in this response file to "true", you agree that you 
+# have reviewed and agree to the terms of the IBM International Program License Agreement accompanying this 
+# program, which is located at CD_ROOT\WAS\lafiles.  If you do not agree to these terms, do not change 
+# the value or otherwise download, install, copy, access, or use the program and promptly return the 
+# program and proof of entitlement to the party from whom you acquired it to obtain a refund of the amount you paid.
+#
+# 
+
+-W silentInstallLicenseAcceptance.value="false"
+
+################################################################################
+#
+# Incremental Install
+#
+# If you are installing additional features on top of an existing installation,
+# (e.g. incremental install), uncomment the following line.  This will notify
+# the installer that you are doing an incremental install.
+#
+# -W NDdetectedexistingcopypanelInstallWizardBean.choice="addFeatures"
+#
+# Please make sure installLocation is set to your existing install location.
+#
+# For already installed features, you need to set the feature active property
+# to false.  For new features you want to install, you need to set the active
+# properties to true.
+#
+# For example, you have installed core product feature, now you want to install
+# samples feature, the active properties should be:
+#
+# -P samplesProductFeatureBean.active="true"
+# -P javadocsProductFeatureBean.active="false"
+
+
+################################################################################
+#
+# IBM WebSphere Application Server Network Deployment, V6.0 Install
+# Location
+#
+# The install location of the product. Specify a valid directory into which the
+# product should be installed. If the directory contains spaces, enclose it in
+# double-quotes as shown in the Windows example below. Note that spaces in the
+# install location is only supported on Windows operating systems.
+# 
+# Below is the list of default install locations for each supported operating
+# system.  By default, in this response file, the Windows install location is 
+# used.  If you want to use the default install location for another operating
+# system, uncomment the appropriate default install location entry (by removing '#') and 
+# then comment out (by adding '#') the Windows operating system entry below.
+#
+#
+# AIX Default Install Location:
+#
+#    -P wasProductBean.installLocation=/usr/IBM/WebSphere/AppServer	
+#
+#
+# HP-UX, Solaris or Linux Default Install Location:
+#
+#    -P wasProductBean.installLocation=/opt/IBM/WebSphere/AppServer	
+#
+#
+# Windows Default Install Location:
+#
+
+
+-P wasProductBean.installLocation="C:\Program Files\IBM\WebSphere\AppServer"
+
+
+################################################################################
+#
+# "Core Product Files" feature
+#
+# This feature is required by Application Server and will be installed by default. 
+# Selection is not required.
+#
+
+
+################################################################################
+#
+# "Application Server samples" feature
+#
+# The selection state of the "Application Server samples" feature. Legal values
+# are:
+# 
+#    true  - Indicates that the feature is selected for installation
+#    false - Indicates that the feature is not selected for installation
+# 
+# For example, to select "Application Server samples" for installation, use
+# 
+#    -P samplesProductFeatureBean.active="true"
+#
+
+
+-P samplesProductFeatureBean.active="true"
+
+
+################################################################################
+#
+# "Javadocs" feature
+#
+# The selection state of the "Javadocs" feature. Legal values are:
+# 
+#    true  - Indicates that the feature is selected for installation
+#    false - Indicates that the feature is not selected for installation
+# 
+# For example, to select "Javadocs" for installation, use
+# 
+#    -P javadocsProductFeatureBean.active="true"
+#
+
+
+-P javadocsProductFeatureBean.active="true"
+
+
+################################################################################
+#
+# WebSphere Application Server Profile Creation Tool 
+#
+# To launch the Profile Creation Tool SILENTLY at the end
+# of the installation, please change the value to "true".
+# Otherwise, change the value to "".
+# 
+
+
+-W ndsummarypanelInstallWizardBean.launchPCT="true"
+
+
+################################################################################
+# If you choose to run Profile Creation Tool silently at the end of the
+# installation, you must
+# 1. get a copy of the PCT response file of Profile creator (from CD) and put to a temp dir
+#    such as: /tmp/WAS/responsefile.pct.NDdmgrProfile.txt           For DMGR profile creation
+#             /tmp/WAS/responsefile.pct.NDmanagedProfile.txt        For Manage profile creation
+#             /tmp/WAS/responsefile.pct.NDstandAloneProfile.txt     For Stand alone profile creation
+# 2. modify the response file by filling in the required options/values. 
+# Note: If the values are not completed properly, the configuration may be unsuccessful. 
+# 3. specify below the absolute path to your modified response file. 
+# 
+# For example, -W pctresponsefilelocationqueryactionInstallWizardBean.fileLocation="/tmp/WAS/responsefile.pct.NDdmgrProfile.txt"
+
+
+-W pctresponsefilelocationqueryactionInstallWizardBean.fileLocation=""
+
+
+

@@ -1,0 +1,3 @@
+-W maintenance.package="/sit/usr/setup/was6.0.2.27/6.0.2-WS-WASJavaSDK-AixPPC32-FP00000027.pak"
+-W product.location="/sit/usr/IBM/WebSphere/AppServer"
+-W update.type="install"
